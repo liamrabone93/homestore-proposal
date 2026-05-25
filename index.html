@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milo × Home Store + More — Proposal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:        #1A5C38;
+      --green-mid:    #2A7A50;
+      --green-light:  #4CAF7D;
+      --green-faint:  #EEF7F2;
+      --green-pale:   #D6EDE1;
+      --orange:       #E8711A;
+      --orange-faint: #FEF4EC;
+      --ink:          #0D1F15;
+      --ink-soft:     #3D5449;
+      --ink-mute:     #7A9486;
+      --rule:         #DDE9E3;
+      --white:        #FFFFFF;
+      --page-bg:      #F6FAF7;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--page-bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 4px 40px rgba(0,0,0,.08);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green);
+      color: var(--white);
+      padding: 56px 64px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 80px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(76,175,125,.25) 0%, transparent 70%);
+    }
+    .hero-meta {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 span { color: var(--green-light); }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.78);
+      max-width: 540px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .badge {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: .73rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.9);
+    }
+
+    /* ── ABOUT YOU BAR ── */
+    .about-bar {
+      background: var(--green-faint);
+      border-bottom: 1px solid var(--green-pale);
+      padding: 28px 64px;
+    }
+    .about-bar-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .about-stat { padding-right: 20px; }
+    .about-stat + .about-stat {
+      padding-left: 20px;
+      border-left: 1px solid var(--green-pale);
+    }
+    .about-stat-num {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .about-stat-label {
+      font-size: .75rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    /* ── Sections ── */
+    section { padding: 48px 64px; }
+    section + section { border-top: 1px solid var(--rule); }
+
+    .section-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .section-intro {
+      font-size: .93rem;
+      color: var(--ink-soft);
+      max-width: 600px;
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+
+    /* ── Challenge cards ── */
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .challenge-card {
+      background: var(--page-bg);
+      border-radius: 10px;
+      padding: 20px;
+      border-left: 3px solid var(--green);
+    }
+    .challenge-card h4 {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+    .challenge-card p {
+      font-size: .82rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    /* ── Pull quote ── */
+    .pull-quote {
+      background: var(--green);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin-top: 20px;
+    }
+    .pull-quote p {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: .98rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(255,255,255,.92);
+    }
+    .pull-quote p em {
+      color: var(--green-light);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      background: var(--ink);
+      padding: 34px 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stat-item {
+      text-align: center;
+      color: var(--white);
+      padding: 0 20px;
+    }
+    .stat-item + .stat-item {
+      border-left: 1px solid rgba(255,255,255,.15);
+    }
+    .stat-number {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 2.3rem;
+      font-weight: 600;
+      color: var(--green-light);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      font-size: .77rem;
+      color: rgba(255,255,255,.7);
+      font-weight: 500;
+    }
+
+    /* ── Fit cards ── */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .fit-card {
+      border: 1.5px solid var(--rule);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .fit-card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .fit-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: var(--green);
+      color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .fit-card h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .fit-card p {
+      font-size: .81rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    /* ── Use cases ── */
+    .usecase-box {
+      background: var(--green-faint);
+      border: 1px solid var(--green-pale);
+      border-radius: 12px;
+      padding: 26px 30px;
+    }
+    .usecase-box-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+    .usecase-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .usecase-item:last-child { margin-bottom: 0; }
+    .usecase-q {
+      background: var(--green);
+      color: var(--white);
+      font-size: .67rem;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .usecase-item p {
+      font-size: .85rem;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    /* ── Roadmap ── */
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .roadmap-card {
+      border-radius: 10px;
+      padding: 18px 18px;
+      position: relative;
+    }
+    .roadmap-card.pri-1 { background: var(--green); color: var(--white); }
+    .roadmap-card.pri-2 { background: var(--green-faint); border: 1.5px solid var(--green-pale); }
+    .roadmap-card.pri-3 { background: var(--page-bg); border: 1.5px solid var(--rule); }
+    .roadmap-tag {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .pri-1 .roadmap-tag { color: var(--green-light); }
+    .pri-2 .roadmap-tag { color: var(--green); }
+    .pri-3 .roadmap-tag { color: var(--ink-mute); }
+    .roadmap-card h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .pri-1 h4 { color: var(--white); }
+    .pri-2 h4, .pri-3 h4 { color: var(--ink); }
+    .roadmap-card p {
+      font-size: .78rem;
+      line-height: 1.5;
+    }
+    .pri-1 p { color: rgba(255,255,255,.8); }
+    .pri-2 p, .pri-3 p { color: var(--ink-soft); }
+
+    /* ── Two-col ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 14px; position: relative; }
+    .step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 15px; top: 34px;
+      width: 1px; height: calc(100% + 4px);
+      background: var(--rule);
+    }
+    .step-num {
+      width: 31px; height: 31px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--white);
+      font-size: .78rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+    .step-body { padding-bottom: 22px; }
+    .step-body h4 { font-size: .88rem; font-weight: 700; margin-bottom: 3px; }
+    .step-body p { font-size: .81rem; color: var(--ink-soft); line-height: 1.55; }
+
+    /* ── Pricing ── */
+    .pricing-card {
+      border: 1.5px solid var(--rule);
+      border-radius: 12px;
+      padding: 24px 22px;
+      margin-bottom: 14px;
+    }
+    .pricing-card:last-child { margin-bottom: 0; }
+    .pricing-card.featured {
+      border-color: var(--green);
+      background: var(--green-faint);
+      position: relative;
+    }
+    .featured-tag {
+      position: absolute;
+      top: -11px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: var(--white);
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 3px 12px;
+      white-space: nowrap;
+    }
+    .pricing-card h4 {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 6px;
+    }
+    .pricing-card .price {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .pricing-card .price-note {
+      font-size: .76rem;
+      color: var(--ink-mute);
+      margin-bottom: 16px;
+    }
+    .pricing-card ul { list-style: none; }
+    .pricing-card ul li {
+      font-size: .81rem;
+      color: var(--ink-soft);
+      padding: 4px 0;
+      border-top: 1px solid rgba(0,0,0,.06);
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .pricing-card ul li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .deduct-note {
+      font-size: .77rem;
+      color: var(--ink-soft);
+      background: var(--orange-faint);
+      border: 1px solid rgba(232,113,26,.2);
+      border-radius: 8px;
+      padding: 9px 13px;
+      margin-top: 12px;
+    }
+    .deduct-note strong { color: var(--orange); }
+
+    /* ── Key dates ── */
+    .dates-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 0;
+    }
+    .date-card {
+      background: var(--page-bg);
+      border: 1.5px solid var(--rule);
+      border-radius: 10px;
+      padding: 16px 18px;
+      text-align: center;
+    }
+    .date-card.highlight {
+      border-color: var(--orange);
+      background: var(--orange-faint);
+    }
+    .date-day {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .date-card.highlight .date-day { color: var(--orange); }
+    .date-month {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+    .date-desc {
+      font-size: .78rem;
+      color: var(--ink-soft);
+      line-height: 1.45;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--ink) 0%, var(--green) 100%);
+      color: var(--white);
+      padding: 48px 64px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.85rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .cta-section > p {
+      font-size: .93rem;
+      color: rgba(255,255,255,.82);
+      max-width: 500px;
+      margin: 0 auto 26px;
+      line-height: 1.6;
+    }
+    .cta-next-steps {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .cta-step {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: .82rem;
+      color: rgba(255,255,255,.92);
+      max-width: 190px;
+      text-align: left;
+    }
+    .cta-step span {
+      display: block;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 5px;
+    }
+    .contact-line {
+      font-size: .83rem;
+      color: rgba(255,255,255,.65);
+    }
+    .contact-line a {
+      color: var(--white);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* ── Integration pills ── */
+    .integration-list {
+      display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px;
+    }
+    .integration-pill {
+      background: var(--page-bg);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 6px 15px;
+      font-size: .79rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+    .integration-pill.highlight {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-faint);
+    }
+    .integration-note {
+      font-size: .78rem;
+      color: var(--ink-mute);
+      margin-top: 12px;
+    }
+
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none; }
+    }
+
+    @media (max-width: 680px) {
+      .hero, section, .stats-bar, .about-bar, .cta-section { padding-left: 28px; padding-right: 28px; }
+      .hero h1 { font-size: 2rem; }
+      .challenge-grid, .fit-grid, .two-col, .roadmap, .dates-row { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .about-stat + .about-stat { border-left: none; padding-left: 0; }
+      .stats-bar { grid-template-columns: 1fr; gap: 20px; }
+      .stat-item + .stat-item { border-left: none; border-top: 1px solid rgba(255,255,255,.15); padding-top: 16px; }
+      .cta-next-steps { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-meta">Confidential Proposal · May 2026</div>
+    <h1>Milo <span>×</span> Home Store <span>+</span> More</h1>
+    <p class="hero-sub">
+      You have 11 years of operational excellence and a growing data estate — but your morning replenishment workflow still starts with a SQL export and a set of Excel macros. Milo replaces that with plain-English answers, instantly, across every system you already use.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">11-year operational history</span>
+      <span class="badge">POC from £1,500/month</span>
+      <span class="badge">Executive presentation: 2 July</span>
+    </div>
+  </header>
+
+  <!-- ABOUT YOU -->
+  <div class="about-bar">
+    <div class="about-bar-label">We know your business</div>
+    <div class="about-stats">
+      <div class="about-stat">
+        <div class="about-stat-num">11 yrs</div>
+        <div class="about-stat-label">Operational history</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">10%</div>
+        <div class="about-stat-label">Sales via app (Feb 2025)</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">85%</div>
+        <div class="about-stat-label">App sales target by May 2026</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">26</div>
+        <div class="about-stat-label">Pallets per truck — zero flexibility</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHALLENGE -->
+  <section>
+    <div class="section-label">The Challenge</div>
+    <h2 class="section-title">A 6 AM race against the clock — every single day</h2>
+    <p class="section-intro">
+      Your demand planning process works, but it's built on a chain of manual steps that depend entirely on experienced people showing up and executing perfectly before 7:45 AM. That's a fragile foundation for a growing retail operation.
+    </p>
+    <div class="challenge-grid">
+      <div class="challenge-card">
+        <h4>Manual morning workflow</h4>
+        <p>SQL export → Excel → macros → manual optimisation → upload. Every day, before 8 AM, with a 20-minute distribution centre lag. One error cascades.</p>
+      </div>
+      <div class="challenge-card">
+        <h4>Single points of failure</h4>
+        <p>The process relies on experienced supply chain knowledge that isn't captured anywhere. No backup expertise at 6:30 AM means one absence creates a crisis.</p>
+      </div>
+      <div class="challenge-card">
+        <h4>Data trapped in silos</h4>
+        <p>Operational information lives outside the ERP. The supply chain team stopped using the SQL script and imports data separately — creating diverging sources of truth.</p>
+      </div>
+      <div class="challenge-card">
+        <h4>Buying team bottleneck</h4>
+        <p>Direct-to-management planning for China imports requires supply chain to add extensive manual context before buyers can even begin interpreting the data.</p>
+      </div>
+    </div>
+    <div class="pull-quote">
+      <p>"Why change if it works?" — <em>because right now, one absence at 6:30 AM is all it takes to break the entire replenishment cycle for half your stores.</em></p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Pre-built data integrations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">Plain English</div>
+      <div class="stat-label">No SQL. No macros. No waiting.</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2 Jul</div>
+      <div class="stat-label">Your executive AI deadline</div>
+    </div>
+  </div>
+
+  <!-- WHY MILO FITS -->
+  <section>
+    <div class="section-label">The Solution</div>
+    <h2 class="section-title">Milo fits exactly where you need it</h2>
+    <p class="section-intro">
+      Milo connects to your ERP, buying systems, and operational data and lets anyone on your team ask questions in plain English — replacing the manual query, macro, and interpretation layer entirely.
+    </p>
+    <div class="fit-grid">
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <div class="fit-icon">📦</div>
+          <h4>Demand forecasting &amp; replenishment</h4>
+        </div>
+        <p>Replace the daily SQL → Excel → macro workflow. Milo queries your ERP and operational data together, optimising for your 26-pallet constraint automatically.</p>
+      </div>
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <div class="fit-icon">🛒</div>
+          <h4>Buying &amp; range planning support</h4>
+        </div>
+        <p>Buyers get answers in plain English without waiting for supply chain to manually prepare and annotate data. Faster decisions, shorter lead-time risk on China imports.</p>
+      </div>
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <div class="fit-icon">📱</div>
+          <h4>App performance intelligence</h4>
+        </div>
+        <p>With 10% of sales through the app and a target of 85%, Milo connects to your app data and CRM to track conversion, MorCard engagement, and early access performance.</p>
+      </div>
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <div class="fit-icon">🔒</div>
+          <h4>Resilience — no single point of failure</h4>
+        </div>
+        <p>When the process knowledge lives in Milo rather than one person's head, any team member can run the morning workflow. No 6:30 AM crisis if someone is off sick.</p>
+      </div>
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <div class="fit-icon">🏪</div>
+          <h4>Store-level operational visibility</h4>
+        </div>
+        <p>Query stock levels, replenishment status, and cluster performance across all stores in plain English — not buried in ERP exports and spreadsheet tabs.</p>
+      </div>
+      <div class="fit-card">
+        <div class="fit-card-top">
+          <div class="fit-icon">🎯</div>
+          <h4>Executive-ready insight by 2 July</h4>
+        </div>
+        <p>The POC gives you concrete, data-backed AI progress to present to your executive team — not a concept, but a working system with real results from your own data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section style="padding-top: 0;">
+    <div class="usecase-box">
+      <div class="usecase-box-label">Questions Milo could answer for Home Store + More — today</div>
+      <div class="usecase-item">
+        <span class="usecase-q">Ask</span>
+        <p>"Which stores are at risk of stockout in the next replenishment cycle based on current sales velocity?"</p>
+      </div>
+      <div class="usecase-item">
+        <span class="usecase-q">Ask</span>
+        <p>"How should today's 26 pallets be allocated across store clusters to minimise overstock and avoid partial loads?"</p>
+      </div>
+      <div class="usecase-item">
+        <span class="usecase-q">Ask</span>
+        <p>"Which China import orders are at highest lead-time risk given current sales trends for those SKUs?"</p>
+      </div>
+      <div class="usecase-item">
+        <span class="usecase-q">Ask</span>
+        <p>"How is MorCard app engagement tracking against the 85% sales target, broken down by store?"</p>
+      </div>
+      <div class="usecase-item">
+        <span class="usecase-q">Ask</span>
+        <p>"Which product categories have the highest reorder frequency and what's the overstock risk this quarter?"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI ROADMAP -->
+  <section>
+    <div class="section-label">Your AI Roadmap</div>
+    <h2 class="section-title">Three priorities, one platform</h2>
+    <p class="section-intro">Your February 2026 roadmap identified three areas. Milo addresses all three from day one.</p>
+    <div class="roadmap">
+      <div class="roadmap-card pri-1">
+        <span class="roadmap-tag">Priority 1</span>
+        <h4>Demand forecasting &amp; inventory optimisation</h4>
+        <p>Replace the manual morning workflow. Automate the query layer across ERP and operational data.</p>
+      </div>
+      <div class="roadmap-card pri-2">
+        <span class="roadmap-tag">Priority 2</span>
+        <h4>Creative design &amp; visual optimisation</h4>
+        <p>AI-assisted content and creative workflows connected to your product and sales data.</p>
+      </div>
+      <div class="roadmap-card pri-3">
+        <span class="roadmap-tag">Priority 3</span>
+        <h4>Buying &amp; range planning</h4>
+        <p>Remove the manual data preparation bottleneck between supply chain and buying teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section>
+    <div class="section-label">Integrations</div>
+    <h2 class="section-title">Connects to everything you already use</h2>
+    <p class="section-intro">500+ pre-built connectors — your ERP, buying tools, and operational systems are ready on day one. Custom builds for your proprietary workflows are included in the POC.</p>
+    <div class="integration-list">
+      <span class="integration-pill highlight">ERP System</span>
+      <span class="integration-pill highlight">SQL / Database</span>
+      <span class="integration-pill highlight">Customer App (Padme)</span>
+      <span class="integration-pill highlight">Buying Systems</span>
+      <span class="integration-pill">Excel / Macros (migration)</span>
+      <span class="integration-pill">Salesforce / CRM</span>
+      <span class="integration-pill">Google Suite</span>
+      <span class="integration-pill">Slack / Teams</span>
+      <span class="integration-pill">Power BI</span>
+      <span class="integration-pill">+ 500 more</span>
+    </div>
+    <p class="integration-note">&#9679; Highlighted integrations are directly relevant to your current stack.</p>
+  </section>
+
+  <!-- KEY DATES -->
+  <section>
+    <div class="section-label">Timeline</div>
+    <h2 class="section-title">A clear path to 2 July</h2>
+    <p class="section-intro" style="margin-bottom: 20px;">Three milestones between now and your executive presentation.</p>
+    <div class="dates-row">
+      <div class="date-card">
+        <div class="date-day">12 Jun</div>
+        <div class="date-month">June 2026</div>
+        <div class="date-desc">Follow-up meeting · 11:30 AM · Milo CTO joins for technical deep-dive with Declan</div>
+      </div>
+      <div class="date-card">
+        <div class="date-day">Mid Jun</div>
+        <div class="date-month">June 2026</div>
+        <div class="date-desc">POC kick-off · Integrations connected, dashboards live, team onboarded</div>
+      </div>
+      <div class="date-card highlight">
+        <div class="date-day">2 Jul</div>
+        <div class="date-month">July 2026</div>
+        <div class="date-desc">Executive presentation · AI progress review · Concrete results from your own data</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS + PRICING -->
+  <section>
+    <div class="two-col">
+      <div>
+        <div class="section-label">Proof of Concept</div>
+        <h2 class="section-title">Live before<br>the boardroom</h2>
+        <p class="section-intro" style="margin-bottom: 22px;">A low-risk, structured path from 12 June to a working system your executives can see.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Data connections &amp; integration setup</h4>
+              <p>We connect to your ERP, buying systems, and app data. Declan prepares the data connection requirements from the 12 June meeting.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Custom dashboards &amp; workflows</h4>
+              <p>We build replenishment views, buying support queries, and executive dashboards — tailored to the sample questions Declan prepares.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Training &amp; 2 July readiness</h4>
+              <p>Team onboarding, Slack support channel, and a working demo with real results ready for your executive presentation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Investment</div>
+        <h2 class="section-title">Pricing</h2>
+        <p class="section-intro" style="margin-bottom: 18px;">Start with a proof of concept — zero long-term commitment required.</p>
+
+        <div class="pricing-card featured">
+          <span class="featured-tag">Start Here</span>
+          <h4>Proof of Concept</h4>
+          <div class="price">£1,500<span style="font-size:1rem; font-weight:400; color: var(--ink-mute)">/mo</span></div>
+          <div class="price-note">Unlimited users · 1,000 interactions</div>
+          <ul>
+            <li>All ERP &amp; system integrations</li>
+            <li>Custom builds for proprietary workflows</li>
+            <li>Replenishment &amp; buying dashboards</li>
+            <li>Full team access — no seat limits</li>
+            <li>Dedicated Slack support channel</li>
+            <li>Executive presentation pack</li>
+          </ul>
+          <div class="deduct-note"><strong>Compare:</strong> A good data analyst costs ~£2,500/month. Milo covers your entire team, across every system, 24/7.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to replace the macros?</h2>
+    <p>Join the proof of concept and have Milo running across your ERP, buying systems, and app data before your 2 July executive meeting.</p>
+    <div class="cta-next-steps">
+      <div class="cta-step">
+        <span>Declan</span>
+        Prepare data connection requirements &amp; sample questions before 12 June
+      </div>
+      <div class="cta-step">
+        <span>12 June · 11:30 AM</span>
+        Technical deep-dive with Milo CTO — lock in POC scope and integration plan
+      </div>
+      <div class="cta-step">
+        <span>2 July</span>
+        Present working AI system with real results to your executive team
+      </div>
+    </div>
+    <p class="contact-line">
+      Questions? Reach Liam at <a href="mailto:liam@milo.ai">liam@milo.ai</a> &nbsp;·&nbsp; Confidential — prepared exclusively for Home Store + More
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
