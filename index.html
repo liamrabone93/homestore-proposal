@@ -48,9 +48,42 @@
     .hero {
       background: var(--crimson);
       color: var(--white);
-      padding: 56px 64px 48px;
+      padding: 40px 64px 48px;
       position: relative;
       overflow: hidden;
+    }
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-logos {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .milo-wordmark {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #5BC8F5 0%, #7B5CF5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .logo-sep {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,.3);
+    }
+    .hsm-wordmark {
+      height: 44px;
+      display: block;
     }
     .hero::before {
       content: '';
@@ -74,7 +107,6 @@
       letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--teal);
-      margin-bottom: 18px;
     }
     .hero h1 {
       font-family: 'Fraunces', Georgia, serif;
@@ -611,7 +643,14 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="hero-meta">Confidential Proposal · May 2026</div>
+    <div class="hero-top">
+      <div class="hero-meta">Confidential Proposal · May 2026</div>
+      <div class="hero-logos">
+        <span class="milo-wordmark">Milo</span>
+        <div class="logo-sep"></div>
+        <img class="hsm-wordmark" src="https://www.homestoreandmore.ie/on/demandware.static/Sites-HomeStore-Site/-/default/dw37464982/images/logo-reversed.svg" alt="Home Store + More" />
+      </div>
+    </div>
     <h1>Milo <span>×</span> Home Store <span>+</span> More</h1>
     <p class="hero-sub">
       You have 11 years of operational excellence and a growing data estate — but your morning replenishment workflow still starts with a SQL export and a set of Excel macros. Milo replaces that with plain-English answers, instantly, across every system you already use.
